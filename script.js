@@ -4,11 +4,15 @@ const clickButton = document.getElementById("clicker");
 const quoteDisplay = document.getElementById("conrad-quote");
 
 const quotes = [
-  "Keep clicking, legend!",
-  "Conrad believes in you!",
-  "Every click counts!",
+  "Keep clicking, slave!",
+  "Conrad does not believe in you!",
+  "Keep clicking like a good boyyy",
   "You're a click machine!",
-  "Unstoppable clicker!"
+  "Please stop!",
+  "Conrad is angry",
+  "You are not beating this game!",
+  "There is no hope for you!",
+  "Stop clicking while you can!"
 ];
 
 clickButton.addEventListener("click", () => {
