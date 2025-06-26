@@ -69,8 +69,10 @@ upgrade2Button.addEventListener("click", () => {
     count -= 200;
     pointsPerSecond = 2;
 
-    // Remove button
-    upgrade2Button.remove();
+    // Try to remove upgrade2Button from DOM
+    if (upgrade2Button.parentNode) {
+      upgrade2Button.parentNode.removeChild(upgrade2Button);
+    }
 
     updateUI();
   }
