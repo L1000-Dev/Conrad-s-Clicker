@@ -89,7 +89,7 @@ button:hover {
     opacity: 0.2;
   }
   100% {
-    transform: translateY(-120vh) scale(1.2);
+    transform: translateY(-120vh) scale(1.2); 
     opacity: 0;
   }
 }
