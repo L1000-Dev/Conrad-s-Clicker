@@ -75,7 +75,8 @@ button:hover {
   bottom: -20px;
   width: 10px;
   height: 10px;
-  background: rgba(255, 255, 255, 0.1);
+  background: white;
+  box-shadow: 0 0 8px white;
   border-radius: 50%;
   animation: float 12s infinite linear;
 }
