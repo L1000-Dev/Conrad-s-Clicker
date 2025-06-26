@@ -65,10 +65,10 @@ function showClickEffect(text) {
   effect.className = "click-float";
   effect.textContent = text;
 
-  // Position near the click button
+  // Correct position relative to the full page (not just the screen)
   const rect = clickButton.getBoundingClientRect();
-  effect.style.left = rect.left + rect.width / 2 + "px";
-  effect.style.top = rect.top + "px";
+  effect.style.left = rect.left + rect.width / 2 + window.scrollX + "px";
+  effect.style.top = rect.top + window.scrollY + "px";
 
   clickEffects.appendChild(effect);
   setTimeout(() => effect.remove(), 1000);
