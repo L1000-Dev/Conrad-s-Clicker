@@ -19,21 +19,18 @@ const quotes = [
 function updateUI() {
   counterDisplay.textContent = count;
 
-  // Check if upgrade1Button is currently in the DOM
   const upgrade1Exists = upgrade1Button && document.body.contains(upgrade1Button);
+  const upgrade2Exists = upgrade2Button && document.body.contains(upgrade2Button);
 
-  // Enable upgrade1 if enough points and button exists
   if (upgrade1Exists) {
     upgrade1Button.disabled = count < 50;
   }
 
-  // Enable upgrade2 only if upgrade1 purchased (button removed) and points >= 200
-  if (!upgrade1Exists) {
+  if (!upgrade1Exists && upgrade2Exists) {
     upgrade2Button.disabled = count < 200;
   }
 }
 
-// Passive points every second
 setInterval(() => {
   if (pointsPerSecond > 0) {
     count += pointsPerSecond;
@@ -57,9 +54,7 @@ upgrade1Button.addEventListener("click", () => {
     count -= 50;
     pointsPerClick = 2;
 
-    // Remove button from DOM
     upgrade1Button.remove();
-
     updateUI();
   }
 });
@@ -69,14 +64,9 @@ upgrade2Button.addEventListener("click", () => {
     count -= 200;
     pointsPerSecond = 2;
 
-    // Try to remove upgrade2Button from DOM
-    if (upgrade2Button.parentNode) {
-      upgrade2Button.parentNode.removeChild(upgrade2Button);
-    }
-
+    upgrade2Button.remove();
     updateUI();
   }
 });
 
-// Initial UI setup
 updateUI();
