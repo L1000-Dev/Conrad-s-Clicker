@@ -13,22 +13,17 @@ body {
 }
 
 .container {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow:
+    0 0 10px rgba(255, 255, 255, 0.3),
+    0 0 20px rgba(255, 255, 255, 0.2),
+    0 0 40px rgba(255, 255, 255, 0.1);
+  z-index: 1;
+  position: relative;
   animation: glowPulse 2s infinite ease-in-out;
-}
-
-@keyframes glowPulse {
-  0%, 100% {
-    box-shadow:
-      0 0 20px rgba(255, 255, 255, 0.2),
-      0 0 40px rgba(255, 255, 255, 0.15),
-      0 0 60px rgba(255, 255, 255, 0.1);
-  }
-  50% {
-    box-shadow:
-      0 0 30px rgba(255, 255, 255, 0.4),
-      0 0 60px rgba(255, 255, 255, 0.3),
-      0 0 90px rgba(255, 255, 255, 0.2);
-  }
 }
 
 button {
