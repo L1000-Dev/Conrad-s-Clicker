@@ -1,4 +1,4 @@
-let count = 0;
+let count = 0; 
 let pointsPerClick = 1;
 let pointsPerSecond = 0;
 let autoClickerInterval;
