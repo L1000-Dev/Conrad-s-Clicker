@@ -26,9 +26,8 @@ clickButton.addEventListener("click", () => {
 
   // Enable upgrade if player has enough points
   if (count >= 50) {
-  upgradeButton.disabled = false;
+    upgradeButton.disabled = false;
   }
-
 });
 
 upgradeButton.addEventListener("click", () => {
