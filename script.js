@@ -1,6 +1,6 @@
 let count = 0;
 let pointsPerClick = 1;
-let pointsPerSecond = 0; // new passive income
+let pointsPerSecond = 0;
 
 const counterDisplay = document.getElementById("counter");
 const clickButton = document.getElementById("clicker");
@@ -19,28 +19,21 @@ const quotes = [
 function updateUI() {
   counterDisplay.textContent = count;
 
-  // Upgrade 1 button disappears after purchase
-  // So only enable it if it exists and not purchased
-  if (upgrade1Button) {
-    if (count >= 50) {
-      upgrade1Button.disabled = false;
-    } else {
-      upgrade1Button.disabled = true;
-    }
+  // Check if upgrade1Button is currently in the DOM
+  const upgrade1Exists = upgrade1Button && document.body.contains(upgrade1Button);
+
+  // Enable upgrade1 if enough points and button exists
+  if (upgrade1Exists) {
+    upgrade1Button.disabled = count < 50;
   }
 
-  // Upgrade 2 button enabled only if upgrade 1 bought (removed) and points >= 200
-  // We check if upgrade1Button is gone, meaning purchased
-  if (!upgrade1Button) {
-    if (count >= 200) {
-      upgrade2Button.disabled = false;
-    } else {
-      upgrade2Button.disabled = true;
-    }
+  // Enable upgrade2 only if upgrade1 purchased (button removed) and points >= 200
+  if (!upgrade1Exists) {
+    upgrade2Button.disabled = count < 200;
   }
 }
 
-// Passive points adding every second
+// Passive points every second
 setInterval(() => {
   if (pointsPerSecond > 0) {
     count += pointsPerSecond;
@@ -64,7 +57,7 @@ upgrade1Button.addEventListener("click", () => {
     count -= 50;
     pointsPerClick = 2;
 
-    // Remove the upgrade 1 button from DOM (disappear)
+    // Remove button from DOM
     upgrade1Button.remove();
 
     updateUI();
@@ -78,7 +71,7 @@ upgrade2Button.addEventListener("click", () => {
 
     upgrade2Button.textContent = "Upgrade Purchased!";
     upgrade2Button.disabled = true;
-    upgrade2Button.style.background = "#22c55e"; // green for success
+    upgrade2Button.style.background = "#22c55e";
 
     updateUI();
   }
