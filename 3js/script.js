@@ -1,4 +1,3 @@
-// ==== Variables ====
 let count = 0;
 let pointsPerClick = 1;
 
@@ -15,27 +14,23 @@ const quotes = [
   "Unstoppable clicker!"
 ];
 
-// ==== Event Listeners ====
-clickButton.addEventListener("click", handleClick);
-upgradeButton.addEventListener("click", purchaseUpgrade);
-
-// ==== Click Logic ====
-function handleClick() {
+clickButton.addEventListener("click", () => {
   count += pointsPerClick;
   counterDisplay.textContent = count;
 
+  // Show random quote every 10 clicks
   if (count % 10 === 0) {
     const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
     quoteDisplay.textContent = randomQuote;
   }
 
-  if (count >= 50 && pointsPerClick === 1) {
+  // Enable upgrade if player has enough points
+  if (count >= 50 && !upgradeButton.disabled) {
     upgradeButton.disabled = false;
   }
-}
+});
 
-// ==== Upgrade Logic ====
-function purchaseUpgrade() {
+upgradeButton.addEventListener("click", () => {
   if (count >= 50) {
     count -= 50;
     pointsPerClick = 2;
@@ -43,6 +38,6 @@ function purchaseUpgrade() {
 
     upgradeButton.textContent = "Upgrade Purchased!";
     upgradeButton.disabled = true;
-    upgradeButton.style.background = "#22c55e";
+    upgradeButton.style.background = "#22c55e"; // green to show success
   }
-}
+});
