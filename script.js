@@ -10,11 +10,12 @@ const upgrade2 = document.getElementById("upgrade-2");
 const clickSound = document.getElementById("click-sound");
 
 const quotes = [
-  "Keep clicking, legend!",
-  "Conrad believes in you!",
-  "Every click counts!",
+  "Keep clicking, slave!",
+  "Conrad doesn't believe in you!",
+  "Every click doesn't count!",
   "You're a click machine!",
-  "Unstoppable clicker!"
+  "Please stop while you can!",
+  "Conrad hopes you have a stroke!"
 ];
 
 // Handle click
