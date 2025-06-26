@@ -14,20 +14,14 @@ const quotes = [
   "Unstoppable clicker!"
 ];
 
-// Function to update UI states like upgrade button enabled/disabled
+// Update UI, especially upgrade button state
 function updateUI() {
   counterDisplay.textContent = count;
 
-  // Enable upgrade button if points >= 50 and not yet purchased
-  if (count >= 50 && !upgradeButton.disabled && upgradeButton.textContent !== "Upgrade Purchased!") {
+  // Enable upgrade button if count >= 50 AND upgrade not yet purchased
+  if (count >= 50 && upgradeButton.textContent !== "Upgrade Purchased!") {
     upgradeButton.disabled = false;
-  }
-  
-  if (count >= 50 && upgradeButton.disabled && upgradeButton.textContent !== "Upgrade Purchased!") {
-    console.log("Enabling upgrade button!");
-    upgradeButton.disabled = false;
-  } else if (count < 50 && !upgradeButton.disabled && upgradeButton.textContent !== "Upgrade Purchased!") {
-    console.log("Disabling upgrade button!");
+  } else if (count < 50 && upgradeButton.textContent !== "Upgrade Purchased!") {
     upgradeButton.disabled = true;
   }
 }
@@ -35,7 +29,6 @@ function updateUI() {
 clickButton.addEventListener("click", () => {
   count += pointsPerClick;
 
-  // Show random quote every 10 clicks
   if (count % 10 === 0) {
     const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
     quoteDisplay.textContent = randomQuote;
@@ -48,13 +41,14 @@ upgradeButton.addEventListener("click", () => {
   if (count >= 50) {
     count -= 50;
     pointsPerClick = 2;
-    counterDisplay.textContent = count;
 
     upgradeButton.textContent = "Upgrade Purchased!";
     upgradeButton.disabled = true;
     upgradeButton.style.background = "#22c55e"; // green to show success
+
+    updateUI();
   }
 });
 
-// Initial UI setup on page load
+// Run UI update once on page load (in case count starts above 0)
 updateUI();
