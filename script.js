@@ -18,13 +18,16 @@ const quotes = [
   "Unstoppable clicker!"
 ];
 
-// Button click
+// Main click handler
 clickButton.addEventListener("click", () => {
   count += pointsPerClick;
+
+  // Show quote every 10 points
   if (count % 10 === 0) {
     const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
     quoteDisplay.textContent = randomQuote;
   }
+
   showClickEffect(`+${pointsPerClick}`);
   updateUI();
 });
@@ -42,7 +45,7 @@ upgrade1.addEventListener("click", () => {
   }
 });
 
-// Upgrade 2: +2 points/sec
+// Upgrade 2: 2 points per second
 upgrade2.addEventListener("click", () => {
   if (count >= 200) {
     count -= 200;
@@ -56,16 +59,22 @@ upgrade2.addEventListener("click", () => {
   }
 });
 
-// Floating +X animation
+// Floating +X animation near button
 function showClickEffect(text) {
   const effect = document.createElement("div");
   effect.className = "click-float";
   effect.textContent = text;
+
+  // Position near the click button
+  const rect = clickButton.getBoundingClientRect();
+  effect.style.left = rect.left + rect.width / 2 + "px";
+  effect.style.top = rect.top + "px";
+
   clickEffects.appendChild(effect);
   setTimeout(() => effect.remove(), 1000);
 }
 
-// Passive points every second
+// Auto-increment logic
 function startAutoClicker() {
   clearInterval(autoClickerInterval);
   autoClickerInterval = setInterval(() => {
@@ -74,7 +83,7 @@ function startAutoClicker() {
   }, 1000);
 }
 
-// Updates button states & counter
+// Update UI and button enable/disable state
 function updateUI() {
   counterDisplay.textContent = count;
   if (count >= 50 && pointsPerClick === 1) {
