@@ -69,9 +69,8 @@ upgrade2Button.addEventListener("click", () => {
     count -= 200;
     pointsPerSecond = 2;
 
-    upgrade2Button.textContent = "Upgrade Purchased!";
-    upgrade2Button.disabled = true;
-    upgrade2Button.style.background = "#22c55e";
+    // Remove button
+    upgrade2Button.remove();
 
     updateUI();
   }
