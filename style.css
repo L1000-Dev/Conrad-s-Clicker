@@ -124,3 +124,36 @@ button:hover {
     transform: translateX(-50%) translateY(-40px);
   }
 }
+
+.update-log {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 15px 20px;
+  border-radius: 15px;
+  box-shadow:
+    0 0 10px rgba(255, 255, 255, 0.1),
+    0 0 30px rgba(255, 255, 255, 0.05);
+  font-size: 14px;
+  max-width: 250px;
+  color: #ccc;
+  z-index: 5;
+}
+
+.update-log h3 {
+  margin-top: 0;
+  color: #fff;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.update-log ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.update-log li {
+  margin-bottom: 6px;
+}
