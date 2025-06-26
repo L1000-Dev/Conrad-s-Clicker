@@ -1,3 +1,4 @@
+// ==== Variables ====
 let count = 0;
 let pointsPerClick = 1;
 
@@ -7,34 +8,34 @@ const quoteDisplay = document.getElementById("conrad-quote");
 const upgradeButton = document.getElementById("upgrade-1");
 
 const quotes = [
-  "Keep clicking, slave!",
-  "Conrad does not believe in you!",
-  "Keep clicking like a good boyyy",
+  "Keep clicking, legend!",
+  "Conrad believes in you!",
+  "Every click counts!",
   "You're a click machine!",
-  "Please stop!",
-  "Conrad is angry",
-  "You are not beating this game!",
-  "There is no hope for you!",
-  "Stop clicking while you can!"
+  "Unstoppable clicker!"
 ];
 
-clickButton.addEventListener("click", () => {
+// ==== Event Listeners ====
+clickButton.addEventListener("click", handleClick);
+upgradeButton.addEventListener("click", purchaseUpgrade);
+
+// ==== Click Logic ====
+function handleClick() {
   count += pointsPerClick;
   counterDisplay.textContent = count;
 
-  // Show random quote every 10 clicks
   if (count % 10 === 0) {
     const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
     quoteDisplay.textContent = randomQuote;
   }
 
-  // Enable upgrade if player has enough points
-  if (count >= 50 && !upgradeButton.disabled) {
+  if (count >= 50 && pointsPerClick === 1) {
     upgradeButton.disabled = false;
   }
-});
+}
 
-upgradeButton.addEventListener("click", () => {
+// ==== Upgrade Logic ====
+function purchaseUpgrade() {
   if (count >= 50) {
     count -= 50;
     pointsPerClick = 2;
@@ -42,6 +43,6 @@ upgradeButton.addEventListener("click", () => {
 
     upgradeButton.textContent = "Upgrade Purchased!";
     upgradeButton.disabled = true;
-    upgradeButton.style.background = "#22c55e"; // green to show success
+    upgradeButton.style.background = "#22c55e";
   }
-});
+}
