@@ -1,73 +1,72 @@
-/* Background and body */
+/* Base styles */
 body {
   margin: 0;
-  padding: 0;
-  height: 100vh;
-  background-color: #121212; /* dark grey-black */
-  color: #eee;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  overflow: hidden;
+  background-color: #1e1e1e;
+  color: #fff;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
   position: relative;
 }
 
-/* Container for game */
 .container {
-  z-index: 10;
   text-align: center;
-  background: rgba(20, 20, 20, 0.85);
-  padding: 30px 50px;
-  border-radius: 12px;
-  box-shadow: 0 0 20px rgba(100, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+  z-index: 1;
 }
 
-/* Score text */
-#score {
-  font-size: 2.2rem;
-  margin-bottom: 20px;
-}
-
-/* Click button */
-#clicker-btn {
-  font-size: 2rem;
-  padding: 15px 40px;
-  background: #1e90ff;
+button {
+  background: #38bdf8;
+  color: white;
+  padding: 15px 25px;
+  font-size: 18px;
+  margin-top: 20px;
   border: none;
   border-radius: 10px;
-  color: white;
   cursor: pointer;
-  box-shadow: 0 5px 15px rgba(30, 144, 255, 0.6);
-  transition: background 0.3s ease;
-}
-#clicker-btn:hover {
-  background: #559eff;
+  transition: background 0.3s, transform 0.2s;
 }
 
-/* Animated dots container */
+button:hover {
+  background: #0ea5e9;
+  transform: scale(1.05);
+}
+
+#conrad-quote {
+  margin-top: 15px;
+  font-style: italic;
+  font-size: 14px;
+  color: #ccc;
+}
+
+/* Animated floating dots */
 .dots {
   position: absolute;
   width: 100%;
   height: 100%;
-  top: 0; left: 0;
+  top: 0;
+  left: 0;
+  pointer-events: none;
   z-index: 0;
-  overflow: hidden;
 }
 
-/* Each dot */
 .dot {
   position: absolute;
   bottom: -20px;
-  width: 12px;
-  height: 12px;
-  background: rgba(255, 255, 255, 0.12);
+  width: 10px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 50%;
-  animation: floatUp 12s linear infinite;
+  animation: float 12s infinite linear;
 }
 
-/* Animation for dots */
-@keyframes floatUp {
+@keyframes float {
   0% {
     transform: translateY(0) scale(0.5);
     opacity: 0;
