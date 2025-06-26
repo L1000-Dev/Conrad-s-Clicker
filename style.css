@@ -85,6 +85,15 @@ button:hover {
   }
 }
 
+#upgrades {
+  margin-top: 20px;
+}
+
+#upgrades button:disabled {
+  background: #555;
+  cursor: not-allowed;
+}
+
 @keyframes glowPulse {
   0%, 100% {
     box-shadow:
