@@ -34,7 +34,7 @@ upgradeButton.addEventListener("click", () => {
   if (count >= 50) {
     count -= 50;
     pointsPerClick = 2;
-    counterDisplay.textContent = count;
+    counterDisplay.textContent = count; 
 
     upgradeButton.textContent = "Upgrade Purchased!";
     upgradeButton.disabled = true;
