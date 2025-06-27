@@ -10,11 +10,11 @@ const upgrade1 = document.getElementById("upgrade-1");
 const upgrade2 = document.getElementById("upgrade-2");
 
 const quotes = [
-  "Keep clicking, legend!",
-  "Conrad believes in you!",
-  "Every click counts!",
+  "Keep clicking, slave!",
+  "Conrad does not believe in you!",
+  "Every click does not count!",
   "You're a click machine!",
-  "Unstoppable clicker!"
+  "Please stop while you can!",
 ];
 
 // === CLICK HANDLER ===
